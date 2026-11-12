@@ -11,7 +11,7 @@ import { SearchModal } from './components/SearchModal';
 import { ChartModal } from './components/ChartModal';
 import { WatchlistDrawer } from './components/WatchlistDrawer';
 
-// Views
+import { SuperchartsView } from './components/views/SuperchartsView';
 import { OverviewView } from './components/views/OverviewView';
 import { StocksView } from './components/views/StocksView';
 import { CryptoView } from './components/views/CryptoView';
@@ -164,6 +164,14 @@ export default function App() {
             economicEvents={ECONOMIC_CALENDAR}
             onSelectAsset={(a) => setSelectedAsset(a)}
             onNavigateToTab={(t) => setActiveTab(t)}
+          />
+        )}
+
+        {activeTab === 'supercharts' && (
+          <SuperchartsView
+            assets={assets}
+            initialAsset={selectedAsset || undefined}
+            onSelectAsset={(a) => setSelectedAsset(a)}
           />
         )}
 

@@ -1,7 +1,16 @@
 import React from 'react';
 import { Search, Sun, Moon, Bookmark, SlidersHorizontal, Globe } from 'lucide-react';
 
-export type ActiveTab = 'overview' | 'stocks' | 'crypto' | 'forex' | 'commodities' | 'bonds' | 'heatmap' | 'screener';
+export type ActiveTab =
+  | 'overview'
+  | 'supercharts'
+  | 'stocks'
+  | 'crypto'
+  | 'forex'
+  | 'commodities'
+  | 'bonds'
+  | 'heatmap'
+  | 'screener';
 
 interface HeaderProps {
   activeTab: ActiveTab;
@@ -28,8 +37,9 @@ export const Header: React.FC<HeaderProps> = ({
   selectedCurrency,
   onCurrencyChange,
 }) => {
-  const tabs: { id: ActiveTab; label: string }[] = [
+  const tabs: { id: ActiveTab; label: string; isPro?: boolean }[] = [
     { id: 'overview', label: 'Overview' },
+    { id: 'supercharts', label: 'Supercharts PRO', isPro: true },
     { id: 'stocks', label: 'Stocks' },
     { id: 'crypto', label: 'Crypto' },
     { id: 'forex', label: 'Forex' },
@@ -144,13 +154,18 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 key={tab.id}
                 onClick={() => onTabChange(tab.id)}
-                className={`px-3.5 py-2.5 text-xs font-semibold tracking-wide whitespace-nowrap transition-colors relative cursor-pointer ${
+                className={`px-3.5 py-2.5 text-xs font-semibold tracking-wide whitespace-nowrap transition-colors relative cursor-pointer flex items-center gap-1.5 ${
                   isActive
                     ? 'text-white font-bold'
                     : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
-                {tab.label}
+                <span>{tab.label}</span>
+                {tab.isPro && (
+                  <span className="px-1.5 py-0.2 rounded bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-extrabold text-[9px] tracking-wider uppercase">
+                    PRO
+                  </span>
+                )}
                 {isActive && (
                   <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#2962ff]" />
                 )}

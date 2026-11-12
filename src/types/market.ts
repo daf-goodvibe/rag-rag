@@ -1,8 +1,14 @@
 export type AssetCategory = 'indices' | 'stocks' | 'crypto' | 'forex' | 'commodities' | 'bonds';
 
-export type Timeframe = '1D' | '5D' | '1M' | '3M' | '6M' | '1Y' | '5Y' | 'ALL';
+export type Timeframe = '1m' | '5m' | '15m' | '1h' | '4h' | '1D' | '5D' | '1M' | '3M' | '6M' | '1Y' | '5Y' | 'ALL';
 
 export type TechnicalSignal = 'Strong Buy' | 'Buy' | 'Neutral' | 'Sell' | 'Strong Sell';
+
+export type ChartStyle = 'candles' | 'hollow' | 'heikin' | 'area' | 'baseline' | 'line';
+
+export type DrawingToolType = 'cursor' | 'trendline' | 'horizontal' | 'fib' | 'position' | 'measure' | 'text';
+
+export type GridLayout = '1' | '2-vert' | '2-horiz' | '4';
 
 export interface Candle {
   time: string;
@@ -89,4 +95,54 @@ export interface WatchlistEntry {
   addedAt: number;
   alertPrice?: number;
   alertCondition?: 'above' | 'below';
+}
+
+export interface Level2Order {
+  price: number;
+  size: number;
+  total: number;
+  depthPct: number;
+}
+
+export interface TimeAndSaleTrade {
+  id: string;
+  time: string;
+  price: number;
+  size: number;
+  side: 'buy' | 'sell';
+}
+
+export interface BacktestTrade {
+  id: string;
+  type: 'LONG' | 'SHORT';
+  entryTime: string;
+  entryPrice: number;
+  exitTime: string;
+  exitPrice: number;
+  pnl: number;
+  pnlPct: number;
+}
+
+export interface StrategyReport {
+  name: string;
+  netProfit: number;
+  netProfitPct: number;
+  profitFactor: number;
+  maxDrawdownPct: number;
+  winRatePct: number;
+  totalTrades: number;
+  trades: BacktestTrade[];
+}
+
+export interface UserDrawing {
+  id: string;
+  type: DrawingToolType;
+  x1: number;
+  y1: number;
+  x2?: number;
+  y2?: number;
+  price1: number;
+  price2?: number;
+  text?: string;
+  color?: string;
 }

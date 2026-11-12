@@ -66,6 +66,36 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
 
   return (
     <div className="space-y-8 animate-in fade-in duration-200">
+      {/* Supercharts PRO Quick Launch Banner */}
+      <div className="bg-gradient-to-r from-[#1e222d] via-[#1a233a] to-[#1e222d] border border-[#2962ff]/40 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#2962ff] to-indigo-600 flex items-center justify-center text-white shrink-0 shadow-md">
+            <span className="font-extrabold text-xs tracking-wider">PRO</span>
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <h2 className="text-sm font-bold text-white tracking-tight">
+                TradingView Supercharts PRO Terminal
+              </h2>
+              <span className="px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 font-mono text-[10px]">
+                Active
+              </span>
+            </div>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Multi-chart split screens (1x1, 2x1, 2x2), Level 2 Order Book DOM, Time & Sales, and Strategy Backtester.
+            </p>
+          </div>
+        </div>
+
+        <button
+          onClick={() => onNavigateToTab('supercharts')}
+          className="px-4 py-2 rounded-lg bg-[#2962ff] hover:bg-blue-600 text-white font-bold text-xs transition-colors flex items-center gap-2 shrink-0 cursor-pointer shadow-md"
+        >
+          <span>Launch Supercharts PRO</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </button>
+      </div>
+
       {/* 1. Markets at a Glance - 4-Column Strip */}
       <section>
         <div className="flex items-center justify-between mb-3">
