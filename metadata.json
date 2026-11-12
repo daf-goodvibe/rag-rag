@@ -1,0 +1,6 @@
+{
+  "name": "TradingView Markets - Global Financial Overview & Screeners",
+  "description": "Comprehensive market intelligence platform inspired by TradingView: global indices ticker tape, interactive candlestick charts, multi-sector heatmaps, stock and crypto screeners, top movers, and live financial news.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
